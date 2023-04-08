@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+#fondo {
+    height: 530px;
+    width: 285px;
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+}
+#pantalla {
+    height: 160px;
+    width: 250px;
+    /* background-color: rgb(102, 99, 99); */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+#texto-de-pantalla {
+    /* background-color: violet; */
+    font-size: 53px;
+    width: 160px;
+    height: 70px;
+    border-radius: 15px;
+    text-align: right;
+    color: white;
+    margin-top: 100px;
+    padding: 10px;
+
+}
+#panel-numerico {
+    height: 300px;
+    width: 250px;
+    /* background-color: rgb(102, 99, 99); */
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.filas {
+    /* background: violet; */
+    width: 265px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.button {
+    height: 55px;
+    width: 55px;
+    border: 0px none black;
+    border-radius: 100%;
+    font-size: 20px;
+    margin: 6px;
+    font-size: 23px;
+    font-weight: 200;
+    color: white;
+    background-color: rgb(49, 49, 49);
+}
+#cero {
+    border-radius: 10px;
+    width: 120px;
+}
+/* colores amarillo de los botones */
+#dividir {
+    background-color: rgb(246, 153, 6);
+    font-size: 30px;
+}
+#por {
+    background-color: rgb(246, 153, 6);
+    font-size: 22px;
+}
+#menos {
+    background-color: rgb(246, 153, 6);
+    font-size: 30px;
+}
+#mas {
+    background-color: rgb(246, 153, 6);
+}
+#igual {
+    background-color: rgb(246, 153, 6);  
+}
+/* colores grises */
+#AC {
+    background-color: rgb(150, 150, 150); 
+    font-size: 20px;  
+    font-weight: lighter;
+    color: black;
+}
+#porcentaje {
+    background-color: rgb(150, 150, 150); 
+    font-size: 20px;
+    font-weight: lighter;
+    color: black;
+}
+#D {
+    background-color: rgb(150, 150, 150); 
+    font-size: 20px;
+    font-weight: lighter;
+    color: rgb(36, 36, 36);
+}
