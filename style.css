@@ -3,11 +3,6 @@
 * {
     font-family: 'Open Sans', sans-serif;
 }
-body {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
 .container {
     display: flex;
     flex-direction: row;
@@ -30,9 +25,9 @@ h1 {
     border-radius: 20px;
 }
 #pantalla {
-    height: 160px;
+    height: 170px;
     width: 250px;
-    /* background-color: rgb(102, 99, 99); */
+    /* background-color: rgb(147, 13, 13); */
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -41,14 +36,15 @@ h1 {
 }
 #texto-de-pantalla {
     /* background-color: violet; */
-    font-size: 53px;
-    width: 160px;
+    font-size: 35px;
+    width: 250px;
     height: 70px;
     border-radius: 15px;
     text-align: right;
     color: white;
     margin-top: 100px;
-    padding: 10px;
+    padding-right: 5.5px;
+    padding-top: 10px;
 
 }
 #panel-numerico {
@@ -144,7 +140,7 @@ h1 {
 }
 #D {
     background-color: rgb(150, 150, 150); 
-    font-size: 20px;
+    font-size: 28px;
     font-weight: lighter;
     color: rgb(36, 36, 36);
 }
