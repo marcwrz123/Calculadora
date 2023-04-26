@@ -58,6 +58,9 @@ function numberSelection() {
                 case '9':
                     numberSelected = '9'
                     break;
+                case '.':
+                    numberSelected = '.'
+                    break;
                 case ' ÷ ':       //seleccionamos que operacion hacemos 
                     division()
                     return
@@ -97,7 +100,7 @@ function numberSelection() {
 function value() { 
     let stringNumbers = numbers.toString() //convertimos el array de los numeros a un string
     screenNumbers = stringNumbers.split(',').join('')  //le quitamos las commas al string de numeros y lo guardamos en esa variable
-    digitNumber = parseInt(screenNumbers)
+    digitNumber = Number(screenNumbers)
 }
 
 function bloquesitos () {
@@ -143,7 +146,7 @@ function operacion() {
             } else {
                 total =  total / bloques[i]
             }
-        } 
+        }   
 
         divide = false
     } else if (porciento === true) {    //operacion de porcentaje 
