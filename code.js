@@ -115,6 +115,25 @@ function operacion() {
         }
 
         resta = false
+    } else if (multiplica === true) {   //operacion de multiplicar 
+
+        if (total == 0) {
+            console.log('aqui');
+            total = 1
+            console.log(total);
+        }
+        console.log(`too`);
+        for (let i = 0; i < bloques.length; i++) {
+            total =  bloques[i] * total
+        }
+
+        multiplica = false
+    } else if (divide === true) {   //operacion de dividir
+        for (let i = 0; i < bloques.length; i++) {
+            total =  total / bloques[i]
+        } 
+
+        divide = false
     }
 
     paragraph.innerHTML = ''
@@ -127,11 +146,13 @@ function operacion() {
 
 
 //funciones de las operaciones
-function division() {
+function division() { 
+    divide = true
     numbers.length = 0
     bloquesitos()
 }
 function multiplication() {
+    multiplica = true
     numbers.length = 0
     bloquesitos()
 }
