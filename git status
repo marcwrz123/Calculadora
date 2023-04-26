@@ -1,0 +1,208 @@
+[1mdiff --git a/code.js b/code.js[m
+[1mindex 914fbdc..4fe17f3 100644[m
+[1m--- a/code.js[m
+[1m+++ b/code.js[m
+[36m@@ -2,69 +2,185 @@[m [mconst paragraph = document.getElementById('texto-de-pantalla')[m
+ [m
+ let buttons = []    //array de input botones[m
+ let numbers = []    //array de numeros [m
+[32m+[m[32mlet newNumbers = [] //array de los numeros que siguen[m[41m [m
+ let screenNumbers   //variable donde se guarda el string de numeros pero sin la coma[m
+[32m+[m[32mlet digitNumber     //string de numeros convertido a digito[m[41m [m
+[32m+[m[32mlet firstSelection[m[41m [m
+ [m
+ function iniciarPrograma() {[m
+     buttons = document.querySelectorAll('.button')  //seleccionamos todos los botones que tengan la clase .button en el array de "buttons"[m
+[31m-    let numberSelected  //numero que se va a asiganar dependiendo del condicional [m
+[31m-    [m
+[32m+[m[32m    firstSelection = true[m
+[32m+[m[32m    numberSelection()   //funcion que se usa para seleccionar el numero a usar[m[41m [m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mfunction numberSelection() {[m
+[32m+[m[32m    let numberSelected[m
+[32m+[m
+     buttons.forEach((boton) => {    //Iteramos los botones [m
+[31m-        boton.addEventListener('click', (e) => {   //Por cada boton hacer un addEventListener()[m
+[32m+[m[32m        console.log('hola');[m
+[32m+[m[32m        // console.log(boton);[m
+[32m+[m[32m        boton.addEventListener('click', (e) => {  //addEventListener a cada boton[m[41m [m
+[32m+[m[32m            console.log('botonsitos');[m
+[32m+[m[32m            console.log(e.target.textContent);[m
+             switch (e.target.textContent) {[m
+                 case '0':[m
+[31m-                    numberSelected = '0'[m
+[31m-                    numbers.push(numberSelected)    //Se guarda cada numero en el array numbers[m
+[32m+[m[32m                    numberSelected = '0'    //Se guarda cada numero en el array numbers[m
+                     break;[m
+                 case '1':[m
+                     numberSelected = '1'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '2':[m
+                     numberSelected = '2'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '3':[m
+                     numberSelected = '3'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '4':[m
+                     numberSelected = '4'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '5':[m
+                     numberSelected = '5'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '6':[m
+                     numberSelected = '6'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '7':[m
+                     numberSelected = '7'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '8':[m
+                     numberSelected = '8'[m
+[31m-                    numbers.push(numberSelected)[m
+                     break;[m
+                 case '9':[m
+                     numberSelected = '9'[m
+[31m-                    numbers.push(numberSelected)[m
+[32m+[m[32m                    break;[m
+[32m+[m[32m                case '÷':       //seleccionamos que operacion hacemos[m[41m [m
+[32m+[m[32m                    division()[m
+[32m+[m[32m                    return[m
+[32m+[m[32m                case 'x':[m
+[32m+[m[32m                    multiplication()[m
+[32m+[m[32m                    return[m
+[32m+[m[32m                case '-':[m
+[32m+[m[32m                    substraction()[m
+[32m+[m[32m                    return[m
+[32m+[m[32m                case '+':[m
+[32m+[m[32m                    addition()[m
+[32m+[m[32m                    return[m
+[32m+[m[32m                default:[m[41m [m
+                     break;[m
+             }[m
+[31m-            value()     [m
+[31m-        })  [m
+[32m+[m
+[32m+[m[32m            console.log(firstSelection);[m
+[32m+[m
+[32m+[m[32m            if (firstSelection === true) {[m[41m    [m
+[32m+[m[32m                numbers.push(numberSelected)[m
+[32m+[m[32m                console.log(numbers);[m
+[32m+[m[32m                console.log('primera seleccionada');[m
+[32m+[m[32m                value()[m[41m     [m
+[32m+[m[32m            } else if (firstSelection === false) {[m[41m [m
+[32m+[m[32m                numbers.push(numberSelected)[m
+[32m+[m[32m                console.log(numbers);[m
+[32m+[m[32m                console.log('segunda seleccionada');[m
+[32m+[m[32m                // newValue()[m
+[32m+[m[32m            }[m
+[32m+[m[32m        })[m
+     })[m
+ }[m
+ [m
+ function value() { [m
+[32m+[m[32m    console.log('value');[m
+     let stringNumbers = numbers.toString() //convertimos el array de los numeros a un string[m
+     screenNumbers = stringNumbers.split(',').join('')  //le quitamos las commas al string de numeros y lo guardamos en esa variable[m
+[31m-    paragraph.innerHTML = screenNumbers     //Modificamos el DOM [m
+[31m-    console.log(`Screen numbers: ${screenNumbers}`);[m
+[32m+[m[32m    digitNumber = parseInt(screenNumbers)[m
+[32m+[m[32m    paragraph.innerHTML = digitNumber     //Modificamos el DOM[m[41m [m
+[32m+[m[32m}[m
+[32m+[m[32mfunction newValue() {[m
+[32m+[m[32m    console.log('ahi si?');[m
+ }[m
+ [m
+ [m
+[32m+[m[32m//funciones de las operaciones[m
+[32m+[m[32mfunction division() {[m
+[32m+[m[32m    console.log('dividir');[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction multiplication() {[m
+[32m+[m[32m    console.log('multiplicar');[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction substraction() {[m
+[32m+[m[32m    console.log('restar');[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction addition() {[m[41m   [m
+[32m+[m[32m    numbers.length = 0[m
+[32m+[m[32m    paragraph.innerHTML += ' + '[m[41m [m
+[32m+[m
+[32m+[m[32m    firstSelection = false[m
+[32m+[m[32m    numberSelection()[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m// function newNumberSelection() {[m
+[32m+[m[32m//     let numberSelected[m
+[32m+[m[32m//     buttons.forEach((boton) => {    //Iteramos los botones[m[41m [m
+[32m+[m[32m//         boton.addEventListener('click', (e) => {  //addEventListener a cada boton[m[41m [m
+[32m+[m[32m//             console.log(e.target.textContent);[m
+[32m+[m[32m//             switch (e.target.textContent) {[m
+[32m+[m[32m//                 case '0':[m
+[32m+[m[32m//                     numberSelected = '0'    //Se guarda cada numero en el array numbers[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '1':[m
+[32m+[m[32m//                     numberSelected = '1'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '2':[m
+[32m+[m[32m//                     numberSelected = '2'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '3':[m
+[32m+[m[32m//                     numberSelected = '3'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '4':[m
+[32m+[m[32m//                     numberSelected = '4'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '5':[m
+[32m+[m[32m//                     numberSelected = '5'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '6':[m
+[32m+[m[32m//                     numberSelected = '6'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '7':[m
+[32m+[m[32m//                     numberSelected = '7'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '8':[m
+[32m+[m[32m//                     numberSelected = '8'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '9':[m
+[32m+[m[32m//                     numberSelected = '9'[m
+[32m+[m[32m//                     break;[m
+[32m+[m[32m//                 case '÷':       //seleccionamos que operacion hacemos[m[41m [m
+[32m+[m[32m//                     division()[m
+[32m+[m[32m//                     return[m
+[32m+[m[32m//                 case 'x':[m
+[32m+[m[32m//                     multiplication()[m
+[32m+[m[32m//                     return[m
+[32m+[m[32m//                 case '-':[m
+[32m+[m[32m//                     substraction()[m
+[32m+[m[32m//                     return[m
+[32m+[m[32m//                 case '+':[m
+[32m+[m[32m//                     addition()[m
+[32m+[m[32m//                     return[m
+[32m+[m[32m//                 default:[m[41m [m
+[32m+[m[32m//                     return;[m
+[32m+[m[32m//             }[m
+[32m+[m
+[32m+[m[32m//             console.log(firstSelection);[m
+[32m+[m
+[32m+[m[32m//             if (firstSelection === true) {[m[41m    [m
+[32m+[m[32m//                 numbers.push(numberSelected)[m
+[32m+[m[32m//                 console.log(numbers);[m
+[32m+[m[32m//                 console.log('primera seleccionada');[m
+[32m+[m[32m//             } else if (firstSelection === false) {[m[41m [m
+[32m+[m[32m//                 console.log('segunda seleccionada');[m
+[32m+[m[32m//             }[m
+[32m+[m[32m//             value()[m[41m     [m
+[32m+[m[32m//         })[m
+[32m+[m[32m//     })[m
+[32m+[m[32m// }[m
+ [m
+ [m
+ [m

@@ -1,0 +1,23 @@
+[33mcommit 2b744317118f33c346a705f002cb6b2b40eea949[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Marcwrz123 <marcoadrianzambra@gmail.com>
+Date:   Sat Apr 15 15:49:50 2023 -0500
+
+    Optimizacion de seleccion de numeros
+
+[33mcommit 956890485198e7fb38df6fa92c324ebbe95d5996[m
+Author: Marcwrz123 <marcoadrianzambra@gmail.com>
+Date:   Sat Apr 15 15:22:36 2023 -0500
+
+    Agregamos la funcion de escribir el numero seleccionado en la pantalla
+
+[33mcommit 43a8a8552ced1a9c2d78615140f7a62f8317fdc0[m
+Author: Marcwrz123 <marcoadrianzambra@gmail.com>
+Date:   Sat Apr 8 18:35:22 2023 -0500
+
+    Cambio de color de botones al momento de dar click
+
+[33mcommit 60bb744f526604a58c685d8fe6d7f42530cb1e26[m
+Author: Marcwrz123 <marcoadrianzambra@gmail.com>
+Date:   Sat Apr 8 11:22:50 2023 -0500
+
+    Agregamos estilos a la calculadora

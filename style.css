@@ -35,8 +35,7 @@ h1 {
     margin-top: 15px;
 }
 #texto-de-pantalla {
-    /* background-color: violet; */
-    font-size: 35px;
+    font-size: 20px;
     width: 250px;
     height: 70px;
     border-radius: 15px;
