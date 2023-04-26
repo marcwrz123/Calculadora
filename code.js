@@ -72,7 +72,12 @@ function numberSelection() {
                 case ' = ':
                     bloquesitos()
                     operacion()
-                return
+                    return
+                case 'AC':
+                    paragraph.innerHTML = ''
+                    bloques.length = 0
+                    numbers.length = 0
+                    return
                 default: 
                     return;
             }
@@ -116,21 +121,24 @@ function operacion() {
 
         resta = false
     } else if (multiplica === true) {   //operacion de multiplicar 
-
         if (total == 0) {
-            console.log('aqui');
             total = 1
-            console.log(total);
         }
-        console.log(`too`);
+
         for (let i = 0; i < bloques.length; i++) {
             total =  bloques[i] * total
         }
 
         multiplica = false
     } else if (divide === true) {   //operacion de dividir
+        console.log('divide');
+    
         for (let i = 0; i < bloques.length; i++) {
-            total =  total / bloques[i]
+            if(i == 0) {
+                total = bloques[0]
+            } else {
+                total =  total / bloques[i]
+            }
         } 
 
         divide = false
