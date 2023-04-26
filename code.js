@@ -8,6 +8,7 @@ let suma = false
 let resta = false 
 let multiplica = false 
 let divide = false 
+porciento = false
 
 let screenNumbers   //variable donde se guarda el string de numeros pero sin la coma
 let digitNumber     //string de numeros convertido a digito 
@@ -69,8 +70,13 @@ function numberSelection() {
                 case ' + ':
                     addition()
                     return
+                case '% ':
+                    porcentaje()
+                    return
                 case ' = ':
-                    bloquesitos()
+                    if (porciento == false) {   //Si no se elige porciento, entonces no se ejecuta esto
+                        bloquesitos()
+                    }
                     operacion()
                     return
                 case 'AC':
@@ -95,8 +101,8 @@ function value() {
 }
 
 function bloquesitos () {
-    bloques.push(digitNumber)
-    console.log(bloques);
+    bloques.push(digitNumber)   //los numeros elegidos en la pantalla, se guardan en forma de bloques dentro de un array
+    console.log(bloques);   
 }
 
 function operacion() {
@@ -104,16 +110,16 @@ function operacion() {
 
     if (suma === true) {    //operacion de suma 
         for (let i = 0; i <= bloques.length -1; i++) {
-            total += bloques[i];
+            total += bloques[i];    //se suma cada valor 
         }
 
         suma = false 
     } else if (resta === true ) {   //operacion de resta
         for (let i = 0; i < bloques.length; i++) {
-            total = bloques[i] - total
+            total = bloques[i] - total  //se resta cada valor 
         }
 
-        if (total < 0) {
+        if (total < 0) {    //si sale negativo pasa a positivo, y vicebersa 
             total = total * -1
         } else if (total > 0) {
             total = total * -1
@@ -121,7 +127,7 @@ function operacion() {
 
         resta = false
     } else if (multiplica === true) {   //operacion de multiplicar 
-        if (total == 0) {
+        if (total == 0) {   //la primera vuelta total debe dar uno, para que el sigueinte total sea el valor que debe de ser 
             total = 1
         }
 
@@ -130,11 +136,9 @@ function operacion() {
         }
 
         multiplica = false
-    } else if (divide === true) {   //operacion de dividir
-        console.log('divide');
-    
+    } else if (divide === true) {   //operacion de dividir    
         for (let i = 0; i < bloques.length; i++) {
-            if(i == 0) {
+            if(i == 0) {    //se asigna el valor del primer elemento del array bloque, para que pueda dividir con el siguiente libremente
                 total = bloques[0]
             } else {
                 total =  total / bloques[i]
@@ -142,12 +146,16 @@ function operacion() {
         } 
 
         divide = false
+    } else if (porciento === true) {    //operacion de porcentaje 
+        total = bloques[0] * (bloques[1] / 100)
+
+        porciento = false
     }
 
-    paragraph.innerHTML = ''
-    paragraph.innerHTML = total
-    bloques.length = 0
-    numbers.length = 0
+    paragraph.innerHTML = ''    //se borra la operacion de la pantalla 
+    paragraph.innerHTML = total     //se imprime el resultado
+    bloques.length = 0     
+    numbers.length = 0  //se reinician todos los arrays
 
     console.log(total);
 }
@@ -171,6 +179,12 @@ function substraction() {
 }
 function addition() {   
     suma = true 
+    numbers.length = 0
+    bloquesitos()
+}
+function porcentaje() {
+    porciento = true 
+    multiplica = false
     numbers.length = 0
     bloquesitos()
 }
