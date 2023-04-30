@@ -3,17 +3,55 @@
 * {
     font-family: 'Open Sans', sans-serif;
 }
-.container {
+
+header {
     display: flex;
-    flex-direction: row;
+    align-self: flex-end;
+    font-size: 13px;
+    
+}
+
+a {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: black;
+    align-self: flex-end;
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(246, 153, 6);
+    font-weight: bold;
+}
+
+footer {
+    display: flex;
+    align-self: flex-start;
+    margin-left: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+body {
+    background-color: #e8eeefcd;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 h1 {
     font-size: 40px;
     text-align: center;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
 #fondo {
     height: 530px;
     width: 285px;
@@ -24,32 +62,32 @@ h1 {
     align-items: center;
     border-radius: 20px;
 }
+
 #pantalla {
     height: 170px;
     width: 250px;
-    /* background-color: rgb(147, 13, 13); */
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-top: 15px;
 }
-#texto-de-pantalla {
-    font-size: 20px;
-    width: 250px;
-    height: 70px;
-    border-radius: 15px;
-    text-align: right;
-    color: white;
-    margin-top: 100px;
-    padding-right: 5.5px;
-    padding-top: 10px;
 
+#texto-de-pantalla {
+    font-size: 22.5px;
+    width: 250px;
+    height: 165px;
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    word-break: break-all;
+    overflow-y: hidden;
 }
+
 #panel-numerico {
     height: 300px;
     width: 250px;
-    /* background-color: rgb(102, 99, 99); */
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -57,8 +95,8 @@ h1 {
     justify-content: center;
     margin-bottom: 10px;
 }
+
 .filas {
-    /* background: violet; */
     width: 265px;
     height: 50px;
     display: flex;
@@ -68,6 +106,7 @@ h1 {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
 .button {
     height: 55px;
     width: 55px;
@@ -80,10 +119,12 @@ h1 {
     color: white;
     background-color: rgb(49, 49, 49);
 }
+
 .button:active {
     background-color: rgb(36, 35, 35);
 }
-#cero {
+
+#cero {     
     border-radius: 10px;
     width: 120px;
 }
@@ -153,4 +194,3 @@ h1 {
 #D:active {
     background-color: rgb(132, 129, 129);
 }
-

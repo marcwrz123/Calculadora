@@ -2,18 +2,21 @@ const paragraph = document.getElementById('texto-de-pantalla')
 
 let buttons = []    //array de input botones
 let numbers = []    //array de numeros 
-let bloques = []
+let bloques = []    //array de numeros en pantalla de manera dividida
+let texto = []  //Array de lo que hay en pantalla en el momento 
 
 let suma = false
 let resta = false 
 let multiplica = false 
 let divide = false 
-porciento = false
+let porciento = false
+let borramos = false
+let segundaPasada = false
 
 let screenNumbers   //variable donde se guarda el string de numeros pero sin la coma
 let digitNumber     //string de numeros convertido a digito 
-let resultado 
-let total
+let total   //es el resultado total de las operaciones
+let noBorrar //Para que no se borre una vez elegida la operacion
 
 function iniciarPrograma() {
     buttons = document.querySelectorAll('.button')  //seleccionamos todos los botones que tengan la clase .button en el array de "buttons"
@@ -25,8 +28,8 @@ function numberSelection() {
     
     buttons.forEach((boton) => {    //Iteramos los botones 
         boton.addEventListener('click', (e) => {  //addEventListener a cada boton 
-            paragraph.innerHTML += e.target.textContent
-
+            paragraph.innerHTML += e.target.textContent            
+            
             switch (e.target.textContent) {
                 case '0':
                     numberSelected = '0'    //Se guarda cada numero en el array numbers
@@ -63,52 +66,76 @@ function numberSelection() {
                     break;
                 case ' ÷ ':       //seleccionamos que operacion hacemos 
                     division()
+                    segundaPasada = true
                     return
                 case ' x ':
                     multiplication()
+                    segundaPasada = true
                     return
                 case ' - ':
                     substraction()
+                    segundaPasada = true
                     return
                 case ' + ':
                     addition()
+                    segundaPasada = true
                     return
                 case '% ':
                     porcentaje()
+                    segundaPasada = true
                     return
                 case ' = ':
                     if (porciento == false) {   //Si no se elige porciento, entonces no se ejecuta esto
                         bloquesitos()
                     }
-                    operacion()
+
+                    operaciones()
                     return
-                case 'AC':
-                    paragraph.innerHTML = ''
+                case 'AC':      //Borra todo lo de la pantalla y reincia todo 
+                    paragraph.innerHTML = ''    
                     bloques.length = 0
                     numbers.length = 0
-                    return
+                    segundaPasada = false   //desabilita la segundaPasada
+                return
+                case '«': 
+                    if (segundaPasada === true) {
+                        texto.push(paragraph.textContent)   //Se guarda lo que hay en pantalla en el array 
+                        noBorrar = texto[texto.length - 1].toString()   //Se guarda en esa variable el ultimo elemento del array, el cual convertimos en un string
+                        noBorrar = noBorrar.split('«').join('') //Le quitamos el signo de borrar al string que sacamos del array texto 
+                        paragraph.innerHTML = noBorrar  //Imprimimos ese ultimo elemento, para que al final no se termine borrando nada
+                    }
+
+                    borrar()
+                return
                 default: 
                     return;
             }
 
-            numbers.push(numberSelected)
+            numbers.push(numberSelected)    //Los numeros seleccionados se guardan en este array 
             value()     
         })
     })
 }
 
 function value() { 
-    let stringNumbers = numbers.toString() //convertimos el array de los numeros a un string
-    screenNumbers = stringNumbers.split(',').join('')  //le quitamos las commas al string de numeros y lo guardamos en esa variable
-    digitNumber = Number(screenNumbers)
+    let stringNumbers = numbers.toString()  //convierte el array de numbers en string s
+    screenNumbers = stringNumbers.split(',').join('')  //le quita las comas al string
+
+    if (borramos == true && segundaPasada !== true) {      //Se borra uno por uno los elementos, siempre y cuando no hayan escogido ya una ecuacion 
+        paragraph.innerHTML = ''       
+        paragraph.innerHTML += screenNumbers  
+    } else {
+        let stringNumbers = numbers.toString() //convertimos el array de los numeros a un string
+        screenNumbers = stringNumbers.split(',').join('')  //le quitamos las commas al string de numeros y lo guardamos en esa variable
+        digitNumber = Number(screenNumbers)     //Convertimos ese string a numeros 
+    }    
 }
 
 function bloquesitos () {
     bloques.push(digitNumber)   //los numeros elegidos en la pantalla, se guardan en forma de bloques dentro de un array
-    console.log(bloques);   
 }
 
-function operacion() {
+function operaciones() {
     total = 0
 
     if (suma === true) {    //operacion de suma 
@@ -151,7 +178,6 @@ function operacion() {
         divide = false
     } else if (porciento === true) {    //operacion de porcentaje 
         total = bloques[0] * (bloques[1] / 100)
-
         porciento = false
     }
 
@@ -159,10 +185,7 @@ function operacion() {
     paragraph.innerHTML = total     //se imprime el resultado
     bloques.length = 0     
     numbers.length = 0  //se reinician todos los arrays
-
-    console.log(total);
 }
-
 
 //funciones de las operaciones
 function division() { 
@@ -192,5 +215,10 @@ function porcentaje() {
     bloquesitos()
 }
 
+function borrar() {
+    borramos = true
+    numbers.pop()
+    value()
+}
 
 window.addEventListener('load', iniciarPrograma)
